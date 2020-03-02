@@ -62,7 +62,10 @@ function total_amount(){
     const subtotal_casing = parseFloat(subtotal_casing_string);
     const subTotal = subtotal_mobile+subtotal_casing;
     document.getElementById("subtotal").innerText = subTotal;
-    document.getElementById("tax").innerText = subTotal*0.01;
+    const tax_two_digit = subTotal*0.03;
+    document.getElementById("tax").innerText = tax_two_digit.toFixed(2);
+    const total = tax_two_digit + subTotal;
+    document.getElementById("total").innerText = total;
 }
 
 
