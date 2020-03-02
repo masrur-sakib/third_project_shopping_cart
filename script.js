@@ -1,11 +1,8 @@
-// const mobilePrice = document.getElementById("mobile_price").innerText;
-// const mobilePriceNumber = parseFloat(mobilePrice);
-// const casingPrice = document.getElementById("casing_price").innerText;
-// const casingPriceNumber = parseFloat(casingPrice);
-
+// Product Price 
 const mobilePrice = 1219;
 const casingPrice = 59;
 
+// Four Quantity Button
 const mobileQtyMinus = document.getElementById("mobile_qty_minus");
 mobileQtyMinus.addEventListener("click", function(){
     minus_button_function("mobile_qty_input", mobilePrice, "mobile_price");
@@ -31,6 +28,20 @@ casingQtyPlus.addEventListener("click", function(){
     total_amount();    
 })
 
+// Two Remove Button
+const removeMobile = document.getElementById("remove_mobile");
+removeMobile.addEventListener("click", function(){
+    remove_mobile();
+    total_amount();
+})
+
+const removeCasing = document.getElementById("remove_casing");
+removeCasing.addEventListener("click", function(){
+    remove_casing();
+    total_amount();
+})
+
+// Minus Button Function 
 function minus_button_function(id, price, id1){
     const currentQty = document.getElementById(id).value;
     const currentQtyNumber = parseFloat(currentQty);
@@ -44,6 +55,7 @@ function minus_button_function(id, price, id1){
     }
 }
 
+// Plus Button Function 
 function plus_button_function(id, price, id1){
     const currentQty = document.getElementById(id).value;
     const currentQtyNumber = parseFloat(currentQty);
@@ -55,6 +67,7 @@ function plus_button_function(id, price, id1){
 
 }
 
+// Total Amount Calculation 
 function total_amount(){
     const subtotal_mobile_string = document.getElementById("mobile_price").innerText;
     const subtotal_mobile = parseFloat(subtotal_mobile_string);
@@ -62,10 +75,22 @@ function total_amount(){
     const subtotal_casing = parseFloat(subtotal_casing_string);
     const subTotal = subtotal_mobile+subtotal_casing;
     document.getElementById("subtotal").innerText = subTotal;
-    const tax_two_digit = subTotal*0.03;
+    const tax_two_digit = subTotal*0.02;
     document.getElementById("tax").innerText = tax_two_digit.toFixed(2);
     const total = tax_two_digit + subTotal;
     document.getElementById("total").innerText = total;
+}
+
+// Product Remove 
+function remove_mobile(){
+    const mobileArea = document.getElementById("product_mobile");
+    mobileArea.style.display = "none";
+    document.getElementById("mobile_price").innerText = 0;
+}
+function remove_casing(){
+    const casingArea = document.getElementById("product_casing");
+    casingArea.style.display = "none";
+    document.getElementById("casing_price").innerText =0;
 }
 
 
